@@ -5,7 +5,7 @@ interface ExperienceItemProps {
   title: string;
   company: string;
   period: string;
-  description: string;
+  description: string | string[];
 }
 
 interface SkillItemProps {
@@ -49,8 +49,23 @@ const App = () => {
         {/* Header */}
         <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-8 flex flex-col md:flex-row items-center justify-between">
           <div className="flex-1 mb-6 md:mb-0">
+            {/* Language selector - Posicionado en la esquina superior derecha */}
+            <div className="flex justify-end mb-4">
+              <div className="inline-flex items-center bg-indigo-800/30 rounded-full px-4 py-2">
+                <LanguageIcon className="w-4 h-4 mr-2" />
+                <span className="mr-2 font-medium">Español</span>
+                <span className="text-gray-300">|</span>
+                <a
+                  href="/en"
+                  className="ml-2 hover:text-indigo-200 transition-colors"
+                >
+                  English
+                </a>
+              </div>
+            </div>
+
             <h1 className="text-4xl font-bold mb-2">Samuel Loaiza Ocampo</h1>
-            <p className="text-indigo-100">Desarrollador Full Stack</p>
+            <p className="text-indigo-100">Full Stack Web Developer</p>
 
             {/* Portfolio Link - Moved to prominent position */}
             <div className="flex items-center mt-3 mb-4">
@@ -107,6 +122,23 @@ const App = () => {
 
         {/* Content */}
         <div className="p-8">
+          {/* Profile / Summary */}
+          <div className="mb-12">
+            <h2 className="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b border-gray-200">
+              Perfil Profesional
+            </h2>
+
+            <p className="text-gray-700 leading-relaxed">
+              Desarrollador web con <strong> 6 meses de experiencia</strong> en
+              entornos reales de producción. Enfoque en aplicaciones web
+              utilizando <strong>React</strong> y <strong>Laravel</strong>,
+              mantenimiento de sistemas existentes y trabajo colaborativo con
+              equipos técnicos y de gestión. Busco oportunidades{" "}
+              <strong>remotas</strong> para seguir creciendo técnicamente y
+              aportar valor en proyectos reales.
+            </p>
+          </div>
+
           {/* Experience Section */}
           <div className="mb-12">
             <h2 className="text-2xl font-bold text-gray-800 mb-6 pb-2 border-b border-gray-200">
@@ -117,7 +149,12 @@ const App = () => {
                 title="Desarrollador Web / Asistente de Project Manager"
                 company="PC Ingeniería, Bogotá"
                 period="06/2023 – Actualidad"
-                description="Apoyo en la gestión y desarrollo de proyectos tecnológicos. Participación activa en la modificación y mejora de aplicaciones y sitios web utilizando PHP (Laravel y vanilla), React.js y MySQL. Implementación de scripts de automatización para tareas de mantenimiento y optimización de procesos internos. Colaboración en la planificación técnica y seguimiento de entregables junto al project manager, asegurando la calidad y cumplimiento de los requerimientos del cliente."
+                description={[
+                  "Desarrollo y mantenimiento de aplicaciones web internas y orientadas a cliente usando React y Laravel",
+                  "Implementación de scripts de automatización para optimizar tareas repetitivas de mantenimiento",
+                  "Corrección de bugs, mejoras de funcionalidad y soporte a código existente en producción",
+                  "Colaboración directa con project manager en planificación técnica y entrega de funcionalidades",
+                ]}
               />
               <ExperienceItem
                 title="Técnico en sistemas"
@@ -134,25 +171,25 @@ const App = () => {
               Habilidades Técnicas
             </h2>
 
-            <div className="grid grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 gap-6">
               <div>
-                <h3>Frontend:</h3>
+                <h3 className="font-medium mb-2">Frontend:</h3>
                 <SkillItem name="React.js" level={4} />
                 <SkillItem name="JavaScript" level={4} />
                 <SkillItem name="TailwindCSS" level={4} />
               </div>
               <div>
-                <h3>Backend:</h3>
+                <h3 className="font-medium mb-2">Backend:</h3>
                 <SkillItem name="PHP (Laravel)" level={4} />
                 <SkillItem name="C# (.NET)" level={5} />
-                <SkillItem name="Python (Flask" level={4} />
+                <SkillItem name="Python (Flask)" level={4} />
               </div>
               <div>
-                <h3>Bases de Datos:</h3>
+                <h3 className="font-medium mb-2">Bases de Datos:</h3>
                 <SkillItem name="MySQL" level={5} />
               </div>
               <div>
-                <h3>Herramientas:</h3>
+                <h3 className="font-medium mb-2">Herramientas:</h3>
                 <SkillItem name="Git y GitHub" level={5} />
               </div>
 
@@ -224,7 +261,16 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({
     <h3 className="text-xl font-semibold text-gray-800">{title}</h3>
     <p className="text-indigo-600 font-medium">{company}</p>
     <p className="text-gray-500 text-sm">{period}</p>
-    <p className="text-gray-700 mt-2">{description}</p>
+
+    {Array.isArray(description) ? (
+      <ul className="list-disc list-inside text-gray-700 mt-2 space-y-1">
+        {description.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
+    ) : (
+      <p className="text-gray-700 mt-2">{description}</p>
+    )}
   </div>
 );
 
@@ -341,6 +387,22 @@ const PortfolioIcon: React.FC<IconProps> = ({ className }) => (
       strokeLinejoin="round"
       strokeWidth={2}
       d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+    />
+  </svg>
+);
+
+const LanguageIcon: React.FC<IconProps> = ({ className }) => (
+  <svg
+    className={className}
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"
     />
   </svg>
 );

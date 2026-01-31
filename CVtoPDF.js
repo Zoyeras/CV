@@ -50,8 +50,8 @@ const generatePDF = async () => {
         timeout: 30000,
       });
 
-      // Wait a bit for any animations or lazy loading
-      await page.waitForTimeout(2000);
+      // ⬇️ REEMPLAZO CORRECTO DE waitForTimeout
+      await new Promise((resolve) => setTimeout(resolve, 2000));
 
       // Hide print elements
       await page.addStyleTag({
@@ -63,13 +63,11 @@ const generatePDF = async () => {
 
       // Generate PDF for all paths in this language version
       for (const outputPath of version.paths) {
-        // Delete existing file
         if (fs.existsSync(outputPath)) {
           fs.unlinkSync(outputPath);
           console.log(`🗑️ Deleted previous file: ${outputPath}`);
         }
 
-        // Create directory if it doesn't exist
         const dir = path.dirname(outputPath);
         if (!fs.existsSync(dir)) {
           fs.mkdirSync(dir, { recursive: true });
@@ -95,12 +93,6 @@ const generatePDF = async () => {
     }
 
     console.log("\n🎉 All PDFs generated successfully!");
-    console.log("📄 Spanish: cv_SamuelLoaiza.pdf");
-    console.log("📄 English: cv_SamuelLoaiza_EN.pdf");
-    console.log("\n📁 Files are available in:");
-    console.log("   - /public/");
-    console.log("   - ../tarjetaPersonal/public/");
-    console.log("   - ../portafolio/public/");
   } catch (error) {
     console.error("❌ Error generating PDFs:", error);
   } finally {

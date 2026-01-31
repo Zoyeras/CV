@@ -5,7 +5,7 @@ interface ExperienceItemProps {
   title: string;
   company: string;
   period: string;
-  description: string;
+  description: string | string[];
 }
 
 interface SkillItemProps {
@@ -49,8 +49,23 @@ const App_EN = () => {
         {/* Header */}
         <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-8 flex flex-col md:flex-row items-center justify-between">
           <div className="flex-1 mb-6 md:mb-0">
+            {/* Language selector - Positioned at top right */}
+            <div className="flex justify-end mb-4">
+              <div className="inline-flex items-center bg-indigo-800/30 rounded-full px-4 py-2">
+                <LanguageIcon className="w-4 h-4 mr-2" />
+                <span className="mr-2 font-medium">English</span>
+                <span className="text-gray-300">|</span>
+                <a
+                  href="/"
+                  className="ml-2 hover:text-indigo-200 transition-colors"
+                >
+                  Español
+                </a>
+              </div>
+            </div>
+
             <h1 className="text-4xl font-bold mb-2">Samuel Loaiza Ocampo</h1>
-            <p className="text-indigo-100">Full Stack Developer</p>
+            <p className="text-indigo-100">Full Stack Web Developer</p>
 
             {/* Portfolio Link */}
             <div className="flex items-center mt-3 mb-4">
@@ -94,14 +109,6 @@ const App_EN = () => {
                 <PhoneIcon className="w-5 h-5 mr-2" />
                 <span>+57 311 261 7910</span>
               </div>
-              <div className="flex items-center">
-                <LocationIcon className="w-5 h-5 mr-2" />
-                <span>Carrera 103 #73-51 sur, Bosa, Bogotá</span>
-              </div>
-              <div className="flex items-center">
-                <CakeIcon className="w-5 h-5 mr-2" />
-                <span>February 18, 2006</span>
-              </div>
             </div>
           </div>
           <div className="flex-shrink-0">
@@ -115,6 +122,22 @@ const App_EN = () => {
 
         {/* Content */}
         <div className="p-8">
+          {/* Profile / Summary */}
+          <div className="mb-12">
+            <h2 className="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b border-gray-200">
+              Professional Profile
+            </h2>
+
+            <p className="text-gray-700 leading-relaxed">
+              Web Developer with <strong>6 months of experience</strong> in real
+              production environments. Focused on web applications using{" "}
+              <strong>React</strong> and <strong>Laravel</strong>, maintenance
+              of existing systems, and collaborative work with technical and
+              management teams. Seeking <strong>remote</strong> opportunities to
+              continue growing technically and adding value to real projects.
+            </p>
+          </div>
+
           {/* Experience Section */}
           <div className="mb-12">
             <h2 className="text-2xl font-bold text-gray-800 mb-6 pb-2 border-b border-gray-200">
@@ -125,62 +148,55 @@ const App_EN = () => {
                 title="Web Developer / Project Manager Assistant"
                 company="PC Ingeniería, Bogotá"
                 period="06/2023 – Present"
-                description="Support in management and development of technology projects. Active participation in modification and improvement of applications and websites using PHP (Laravel and vanilla), React.js and MySQL. Implementation of automation scripts for maintenance tasks and optimization of internal processes. Collaboration in technical planning and deliverables tracking with the project manager, ensuring quality and compliance with client requirements."
+                description={[
+                  "Development and maintenance of internal and customer-facing web applications using React and Laravel",
+                  "Implementation of automation scripts to optimize repetitive maintenance tasks",
+                  "Bug fixes, functionality improvements, and support for existing production code",
+                  "Direct collaboration with project manager on technical planning and feature delivery",
+                ]}
               />
               <ExperienceItem
-                title="IT Technician"
+                title="Systems Technician"
                 company="JASA IT SAS, Bogotá"
-                period="9/2024 - 12/2024"
-                description="Preventive maintenance of equipment, inventory management in GLPI, and preparation of accurate technical reports."
-              />
-              <ExperienceItem
-                title="On Site Support"
-                company="CLIENT FIRST SERVICES, Bogotá"
-                period="8/2024 - 9/2024"
-                description="Technical support for ATMs and management of computer equipment relocation."
-              />
-              <ExperienceItem
-                title="Treasury Assistant"
-                company="Fondo Nacional Económico del Partido Conservador Colombiano, Bogotá"
-                period="10/2023 - 12/2023"
-                description="Information management in Excel spreadsheets, accounting in Helisa, and organization of physical and digital files."
-              />
-              <ExperienceItem
-                title="IT Technician"
-                company="Fondo Nacional Económico del Partido Conservador Colombiano, Bogotá"
-                period="4/2023 - 9/2023"
-                description="Maintenance, optimization, and formatting of computers, configuration and repair of printers."
+                period="09/2024 - 12/2024"
+                description="Preventive equipment maintenance, inventory management in GLPI, and preparation of accurate technical reports."
               />
             </div>
           </div>
 
-          {/* Technical Skills Section */}
+          {/* Skills Section */}
           <div className="mb-12">
             <h2 className="text-2xl font-bold text-gray-800 mb-6 pb-2 border-b border-gray-200">
               Technical Skills
             </h2>
+
             <div className="grid grid-cols-2 gap-6">
-              <SkillItem name="React.js" level={4} />
-              <SkillItem name="JavaScript" level={4} />
-              <SkillItem name="PHP" level={3} />
-              <SkillItem name="Laravel" level={3} />
-              <SkillItem name="MySQL" level={3} />
-              <SkillItem name="Python" level={3} />
-              <SkillItem name="C#" level={3} />
-              <SkillItem name=".NET" level={3} />
-              <SkillItem name="Git & GitHub" level={4} />
-              <SkillItem name="TailwindCSS" level={4} />
-              {/* Support skills at the end */}
-              <SkillItem name="Technical Support" level={4} />
-              <SkillItem name="Equipment Optimization" level={3} />
-              <SkillItem name="System Maintenance" level={3} />
-              <SkillItem name="Issue Resolution" level={3} />
+              <div>
+                <h3 className="font-medium mb-2">Frontend:</h3>
+                <SkillItem name="React.js" level={4} />
+                <SkillItem name="JavaScript" level={4} />
+                <SkillItem name="TailwindCSS" level={4} />
+              </div>
+              <div>
+                <h3 className="font-medium mb-2">Backend:</h3>
+                <SkillItem name="PHP (Laravel)" level={4} />
+                <SkillItem name="C# (.NET)" level={5} />
+                <SkillItem name="Python (Flask)" level={4} />
+              </div>
+              <div>
+                <h3 className="font-medium mb-2">Databases:</h3>
+                <SkillItem name="MySQL" level={5} />
+              </div>
+              <div>
+                <h3 className="font-medium mb-2">Tools:</h3>
+                <SkillItem name="Git & GitHub" level={5} />
+              </div>
 
               <div className="col-span-2 mt-6">
                 <h3 className="text-xl font-semibold mb-4">Languages</h3>
                 <div className="flex justify-between">
                   <span>Spanish: Native</span>
-                  <span>English: Intermediate</span>
+                  <span>English: B2 in progress (basic professional use)</span>
                 </div>
               </div>
             </div>
@@ -195,11 +211,11 @@ const App_EN = () => {
               <EducationItem
                 title="Information Technology Technologist"
                 institution="UNIMINUTO University, Bogotá"
-                period="1/2024 - 12/2026"
+                period="01/2024 - 12/2026"
               />
               <EducationItem
-                title="IT Systems Technician"
-                institution="SENA (National Learning Service), Bogotá"
+                title="Systems Technician"
+                institution="National Learning Service (SENA), Bogotá"
                 period="2022 - 2023"
               />
             </div>
@@ -213,18 +229,18 @@ const App_EN = () => {
             <div className="space-y-4">
               <p className="text-gray-700">
                 Developed personal projects in my free time, including a
-                fullstack task manager with Python Flask, SQLAlchemy and
+                fullstack task manager with Python Flask, SQLAlchemy, and
                 React.js (Vite + TailwindCSS), integrating secure authentication
                 with JWT tokens.
               </p>
               <p className="text-gray-700">
-                Developed my personal portfolio using React.js, Vite and
+                Developed my personal portfolio using React.js, Vite, and
                 TailwindCSS, applying responsive design principles and frontend
                 development best practices.
               </p>
               <p className="text-gray-700">
-                Developed a digital business card with React.js, Vite and
-                TailwindCSS.
+                Developed a digital professional presentation card with
+                React.js, Vite, and TailwindCSS.
               </p>
             </div>
           </div>
@@ -244,7 +260,16 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({
     <h3 className="text-xl font-semibold text-gray-800">{title}</h3>
     <p className="text-indigo-600 font-medium">{company}</p>
     <p className="text-gray-500 text-sm">{period}</p>
-    <p className="text-gray-700 mt-2">{description}</p>
+
+    {Array.isArray(description) ? (
+      <ul className="list-disc list-inside text-gray-700 mt-2 space-y-1">
+        {description.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
+    ) : (
+      <p className="text-gray-700 mt-2">{description}</p>
+    )}
   </div>
 );
 
@@ -276,7 +301,7 @@ const EducationItem: React.FC<EducationItemProps> = ({
   </div>
 );
 
-// Icon components (same as before)
+// Icon components (reusing same icons)
 const MailIcon: React.FC<IconProps> = ({ className }) => (
   <svg
     className={className}
@@ -305,44 +330,6 @@ const PhoneIcon: React.FC<IconProps> = ({ className }) => (
       strokeLinejoin="round"
       strokeWidth={2}
       d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-    />
-  </svg>
-);
-
-const LocationIcon: React.FC<IconProps> = ({ className }) => (
-  <svg
-    className={className}
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-    />
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-    />
-  </svg>
-);
-
-const CakeIcon: React.FC<IconProps> = ({ className }) => (
-  <svg
-    className={className}
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z"
     />
   </svg>
 );
@@ -399,6 +386,22 @@ const PortfolioIcon: React.FC<IconProps> = ({ className }) => (
       strokeLinejoin="round"
       strokeWidth={2}
       d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+    />
+  </svg>
+);
+
+const LanguageIcon: React.FC<IconProps> = ({ className }) => (
+  <svg
+    className={className}
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"
     />
   </svg>
 );
