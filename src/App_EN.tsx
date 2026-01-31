@@ -23,7 +23,7 @@ interface IconProps {
   className?: string;
 }
 
-const App = () => {
+const App_EN = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-purple-100 p-6">
       {/* Floating WhatsApp Button */}
@@ -38,7 +38,7 @@ const App = () => {
 
       {/* Floating Download CV Button */}
       <a
-        href="/cv_SamuelLoaiza.pdf"
+        href="/cv_SamuelLoaiza_EN.pdf"
         download
         className="fixed right-6 bottom-6 bg-indigo-600 text-white p-4 rounded-full shadow-lg hover:bg-indigo-700 transition-colors z-10 no-print"
       >
@@ -50,9 +50,9 @@ const App = () => {
         <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-8 flex flex-col md:flex-row items-center justify-between">
           <div className="flex-1 mb-6 md:mb-0">
             <h1 className="text-4xl font-bold mb-2">Samuel Loaiza Ocampo</h1>
-            <p className="text-indigo-100">Desarrollador Full Stack</p>
+            <p className="text-indigo-100">Full Stack Developer</p>
 
-            {/* Portfolio Link - Moved to prominent position */}
+            {/* Portfolio Link */}
             <div className="flex items-center mt-3 mb-4">
               <PortfolioIcon className="w-5 h-5 mr-2" />
               <a
@@ -61,7 +61,7 @@ const App = () => {
                 rel="noopener noreferrer"
                 className="text-white hover:text-indigo-200 transition-colors font-medium underline"
               >
-                Ver Portafolio
+                View Portfolio
               </a>
             </div>
 
@@ -92,7 +92,15 @@ const App = () => {
               </div>
               <div className="flex items-center">
                 <PhoneIcon className="w-5 h-5 mr-2" />
-                <span>3112617910</span>
+                <span>+57 311 261 7910</span>
+              </div>
+              <div className="flex items-center">
+                <LocationIcon className="w-5 h-5 mr-2" />
+                <span>Carrera 103 #73-51 sur, Bosa, Bogotá</span>
+              </div>
+              <div className="flex items-center">
+                <CakeIcon className="w-5 h-5 mr-2" />
+                <span>February 18, 2006</span>
               </div>
             </div>
           </div>
@@ -110,57 +118,69 @@ const App = () => {
           {/* Experience Section */}
           <div className="mb-12">
             <h2 className="text-2xl font-bold text-gray-800 mb-6 pb-2 border-b border-gray-200">
-              Experiencia
+              Experience
             </h2>
             <div className="space-y-6">
               <ExperienceItem
-                title="Desarrollador Web / Asistente de Project Manager"
+                title="Web Developer / Project Manager Assistant"
                 company="PC Ingeniería, Bogotá"
-                period="06/2023 – Actualidad"
-                description="Apoyo en la gestión y desarrollo de proyectos tecnológicos. Participación activa en la modificación y mejora de aplicaciones y sitios web utilizando PHP (Laravel y vanilla), React.js y MySQL. Implementación de scripts de automatización para tareas de mantenimiento y optimización de procesos internos. Colaboración en la planificación técnica y seguimiento de entregables junto al project manager, asegurando la calidad y cumplimiento de los requerimientos del cliente."
+                period="06/2023 – Present"
+                description="Support in management and development of technology projects. Active participation in modification and improvement of applications and websites using PHP (Laravel and vanilla), React.js and MySQL. Implementation of automation scripts for maintenance tasks and optimization of internal processes. Collaboration in technical planning and deliverables tracking with the project manager, ensuring quality and compliance with client requirements."
               />
               <ExperienceItem
-                title="Técnico en sistemas"
+                title="IT Technician"
                 company="JASA IT SAS, Bogotá"
                 period="9/2024 - 12/2024"
-                description="Mantenimiento preventivo de equipos, gestión de inventarios en GLPI y elaboración de informes técnicos precisos."
+                description="Preventive maintenance of equipment, inventory management in GLPI, and preparation of accurate technical reports."
+              />
+              <ExperienceItem
+                title="On Site Support"
+                company="CLIENT FIRST SERVICES, Bogotá"
+                period="8/2024 - 9/2024"
+                description="Technical support for ATMs and management of computer equipment relocation."
+              />
+              <ExperienceItem
+                title="Treasury Assistant"
+                company="Fondo Nacional Económico del Partido Conservador Colombiano, Bogotá"
+                period="10/2023 - 12/2023"
+                description="Information management in Excel spreadsheets, accounting in Helisa, and organization of physical and digital files."
+              />
+              <ExperienceItem
+                title="IT Technician"
+                company="Fondo Nacional Económico del Partido Conservador Colombiano, Bogotá"
+                period="4/2023 - 9/2023"
+                description="Maintenance, optimization, and formatting of computers, configuration and repair of printers."
               />
             </div>
           </div>
 
-          {/* Skills Section - Updated to Habilidades Técnicas */}
+          {/* Technical Skills Section */}
           <div className="mb-12">
             <h2 className="text-2xl font-bold text-gray-800 mb-6 pb-2 border-b border-gray-200">
-              Habilidades Técnicas
+              Technical Skills
             </h2>
-
-            <div className="grid grid-cols-4 gap-6">
-              <div>
-                <h3>Frontend:</h3>
-                <SkillItem name="React.js" level={4} />
-                <SkillItem name="JavaScript" level={4} />
-                <SkillItem name="TailwindCSS" level={4} />
-              </div>
-              <div>
-                <h3>Backend:</h3>
-                <SkillItem name="PHP (Laravel)" level={4} />
-                <SkillItem name="C# (.NET)" level={5} />
-                <SkillItem name="Python (Flask" level={4} />
-              </div>
-              <div>
-                <h3>Bases de Datos:</h3>
-                <SkillItem name="MySQL" level={5} />
-              </div>
-              <div>
-                <h3>Herramientas:</h3>
-                <SkillItem name="Git y GitHub" level={5} />
-              </div>
+            <div className="grid grid-cols-2 gap-6">
+              <SkillItem name="React.js" level={4} />
+              <SkillItem name="JavaScript" level={4} />
+              <SkillItem name="PHP" level={3} />
+              <SkillItem name="Laravel" level={3} />
+              <SkillItem name="MySQL" level={3} />
+              <SkillItem name="Python" level={3} />
+              <SkillItem name="C#" level={3} />
+              <SkillItem name=".NET" level={3} />
+              <SkillItem name="Git & GitHub" level={4} />
+              <SkillItem name="TailwindCSS" level={4} />
+              {/* Support skills at the end */}
+              <SkillItem name="Technical Support" level={4} />
+              <SkillItem name="Equipment Optimization" level={3} />
+              <SkillItem name="System Maintenance" level={3} />
+              <SkillItem name="Issue Resolution" level={3} />
 
               <div className="col-span-2 mt-6">
-                <h3 className="text-xl font-semibold mb-4">Idiomas</h3>
+                <h3 className="text-xl font-semibold mb-4">Languages</h3>
                 <div className="flex justify-between">
-                  <span>Español: Nativo</span>
-                  <span>Inglés: B2 en progreso (uso profesional básico)</span>
+                  <span>Spanish: Native</span>
+                  <span>English: Intermediate</span>
                 </div>
               </div>
             </div>
@@ -169,17 +189,17 @@ const App = () => {
           {/* Education Section */}
           <div className="mb-12">
             <h2 className="text-2xl font-bold text-gray-800 mb-6 pb-2 border-b border-gray-200">
-              Formación
+              Education
             </h2>
             <div className="space-y-6">
               <EducationItem
-                title="Tecnólogo en informática"
-                institution="Universidad UNIMINUTO, Bogotá"
+                title="Information Technology Technologist"
+                institution="UNIMINUTO University, Bogotá"
                 period="1/2024 - 12/2026"
               />
               <EducationItem
-                title="Técnico en Sistemas"
-                institution="Servicio Nacional de Aprendizaje, Bogotá"
+                title="IT Systems Technician"
+                institution="SENA (National Learning Service), Bogotá"
                 period="2022 - 2023"
               />
             </div>
@@ -188,23 +208,23 @@ const App = () => {
           {/* Activities Section */}
           <div>
             <h2 className="text-2xl font-bold text-gray-800 mb-6 pb-2 border-b border-gray-200">
-              Actividades
+              Activities
             </h2>
             <div className="space-y-4">
               <p className="text-gray-700">
-                Desarrollé proyectos propios en mi tiempo libre, entre ellos un
-                gestor de tareas fullstack con Python Flask, SQLAlchemy y
-                React.js (Vite + TailwindCSS), integrando autenticación segura
-                con tokens JWT.
+                Developed personal projects in my free time, including a
+                fullstack task manager with Python Flask, SQLAlchemy and
+                React.js (Vite + TailwindCSS), integrating secure authentication
+                with JWT tokens.
               </p>
               <p className="text-gray-700">
-                Desarrollé mi portafolio personal utilizando React.js, Vite y
-                TailwindCSS, aplicando principios de diseño responsivo y buenas
-                prácticas de desarrollo frontend.
+                Developed my personal portfolio using React.js, Vite and
+                TailwindCSS, applying responsive design principles and frontend
+                development best practices.
               </p>
               <p className="text-gray-700">
-                Desarrollé una tarjeta profesional de presentación digital con
-                React.js, Vite y TailwindCSS.
+                Developed a digital business card with React.js, Vite and
+                TailwindCSS.
               </p>
             </div>
           </div>
@@ -256,7 +276,7 @@ const EducationItem: React.FC<EducationItemProps> = ({
   </div>
 );
 
-// Icon components (mantenemos los mismos iconos)
+// Icon components (same as before)
 const MailIcon: React.FC<IconProps> = ({ className }) => (
   <svg
     className={className}
@@ -285,6 +305,44 @@ const PhoneIcon: React.FC<IconProps> = ({ className }) => (
       strokeLinejoin="round"
       strokeWidth={2}
       d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+    />
+  </svg>
+);
+
+const LocationIcon: React.FC<IconProps> = ({ className }) => (
+  <svg
+    className={className}
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+    />
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+    />
+  </svg>
+);
+
+const CakeIcon: React.FC<IconProps> = ({ className }) => (
+  <svg
+    className={className}
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z"
     />
   </svg>
 );
@@ -345,4 +403,4 @@ const PortfolioIcon: React.FC<IconProps> = ({ className }) => (
   </svg>
 );
 
-export default App;
+export default App_EN;
