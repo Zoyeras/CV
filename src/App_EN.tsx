@@ -49,7 +49,7 @@ const App_EN = () => {
         {/* Header */}
         <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-8 flex flex-col md:flex-row items-center justify-between">
           <div className="flex-1 mb-6 md:mb-0">
-            {/* Language selector - Positioned at top right */}
+            {/* Language selector - Positioned at top right 
             <div className="flex justify-end mb-4">
               <div className="inline-flex items-center bg-indigo-800/30 rounded-full px-4 py-2">
                 <LanguageIcon className="w-4 h-4 mr-2" />
@@ -63,6 +63,7 @@ const App_EN = () => {
                 </a>
               </div>
             </div>
+            */}
 
             <h1 className="text-4xl font-bold mb-2">Samuel Loaiza Ocampo</h1>
             <p className="text-indigo-100">Full Stack Web Developer</p>
@@ -389,7 +390,8 @@ const PortfolioIcon: React.FC<IconProps> = ({ className }) => (
     />
   </svg>
 );
-
+{
+  /* 
 const LanguageIcon: React.FC<IconProps> = ({ className }) => (
   <svg
     className={className}
@@ -405,5 +407,6 @@ const LanguageIcon: React.FC<IconProps> = ({ className }) => (
     />
   </svg>
 );
-
+*/
+}
 export default App_EN;
