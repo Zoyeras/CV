@@ -1,15 +1,19 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import App from "./App";
-import App_EN from "./App_EN";
+import { CVLayout } from "./components/CVLayout";
+import { cvDataEs, cvDataEn } from "./data/cvData";
 
 const MainRouter = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/en" element={<App_EN />} />
+        {/* Ruta raíz: Carga datos en Español */}
+        <Route path="/" element={<CVLayout data={cvDataEs} />} />
+
+        {/* Ruta inglés: Carga datos en Inglés */}
+        <Route path="/en" element={<CVLayout data={cvDataEn} />} />
+
         {/* Redirección por defecto */}
-        <Route path="*" element={<App />} />
+        <Route path="*" element={<CVLayout data={cvDataEs} />} />
       </Routes>
     </Router>
   );

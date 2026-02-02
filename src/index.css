@@ -1,1 +1,24 @@
 @import "tailwindcss";
+
+@media print {
+  @page {
+    margin: 0;
+    size: auto;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Ocultar encabezados y pies de página automáticos del navegador */
+  header,
+  footer,
+  aside,
+  nav,
+  form,
+  iframe,
+  .no-print {
+    display: none !important;
+  }
+}
