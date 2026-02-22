@@ -52,7 +52,7 @@ export interface CVData {
 const socialLinks = [
   {
     name: "LinkedIn",
-    url: "https://linkedin.com/in/samuel-loaiza-ocampo",
+    url: "https://www.linkedin.com/in/samueldavidloaiza/",
     icon: Linkedin,
   },
   {

@@ -8,7 +8,7 @@ interface CVLayoutProps {
 }
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-  <h2 className="text-lg font-bold text-slate-800 border-b-2 border-indigo-600 pb-1 mb-2 uppercase tracking-wider">
+  <h2 className="text-lg print:text-base font-bold text-slate-800 border-b-2 border-indigo-600 pb-1 mb-2 print:mb-1 uppercase tracking-wider">
     {children}
   </h2>
 );
@@ -52,17 +52,17 @@ export const CVLayout: React.FC<CVLayoutProps> = ({ data, locale }) => {
           </a>
         </div>
         {/* HEADER COMPACTO */}
-        <header className="bg-slate-900 text-white p-6 print:p-4">
+        <header className="bg-slate-900 text-white p-6 print:p-3">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
             <div>
-              <h1 className="text-3xl font-black tracking-tighter border-l-4 border-indigo-500 pl-4 uppercase">
+              <h1 className="text-3xl print:text-2xl font-black tracking-tighter border-l-4 border-indigo-500 pl-4 uppercase">
                 {profile.name}
               </h1>
-              <p className="text-indigo-400 font-medium mt-1 text-lg pl-4">
+              <p className="text-indigo-400 font-medium mt-1 text-lg print:text-base pl-4">
                 {profile.role}
               </p>
             </div>
-            <div className="grid grid-cols-1 gap-2 text-sm text-slate-300">
+            <div className="grid grid-cols-1 gap-1.5 text-sm print:text-xs text-slate-300">
               <div className="flex items-center gap-2">
                 <span>📍</span> {profile.location}
               </div>
@@ -72,16 +72,30 @@ export const CVLayout: React.FC<CVLayoutProps> = ({ data, locale }) => {
               <div className="flex items-center gap-2">
                 <span>📱</span> {profile.phone}
               </div>
+              <div className="flex flex-wrap items-center gap-3 pt-1 print:pt-0.5">
+                {profile.social.map(({ name, url, icon: Icon }) => (
+                  <a
+                    key={name}
+                    href={url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1 text-slate-200 hover:text-white transition-colors"
+                  >
+                    <Icon size={13} />
+                    <span className="text-[11px] print:text-[10px]">{name}</span>
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </header>
 
-        <div className="p-8 print:p-6 grid grid-cols-1 md:grid-cols-3 gap-8 print:gap-6">
+        <div className="p-8 print:p-4 grid grid-cols-1 md:grid-cols-3 gap-8 print:gap-4">
           {/* COLUMNA IZQUIERDA (Principal) */}
-          <div className="md:col-span-2 space-y-6 print:space-y-4">
+          <div className="md:col-span-2 space-y-6 print:space-y-3">
             <section>
               <SectionTitle>Perfil</SectionTitle>
-              <p className="text-gray-700 leading-relaxed text-sm text-justify">
+              <p className="text-gray-700 leading-relaxed print:leading-snug text-sm print:text-xs text-justify">
                 {profile.summary}
               </p>
             </section>
@@ -89,19 +103,19 @@ export const CVLayout: React.FC<CVLayoutProps> = ({ data, locale }) => {
             <section>
               <SectionTitle>{labels.experience}</SectionTitle>
               {experience.map((exp) => (
-                <div key={exp.id} className="mb-4">
+                <div key={exp.id} className="mb-4 print:mb-2">
                   <div className="flex justify-between items-baseline">
-                    <h3 className="text-md font-bold text-slate-800">
+                    <h3 className="text-md print:text-sm font-bold text-slate-800">
                       {exp.role}
                     </h3>
-                    <span className="text-xs font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded">
+                    <span className="text-xs print:text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded">
                       {exp.period}
                     </span>
                   </div>
-                  <p className="text-sm font-semibold text-gray-600 mb-1">
+                  <p className="text-sm print:text-xs font-semibold text-gray-600 mb-1 print:mb-0.5">
                     {exp.company}
                   </p>
-                  <ul className="list-disc list-inside text-xs text-gray-600 space-y-1">
+                  <ul className="list-disc list-inside text-xs print:text-[11px] text-gray-600 space-y-1 print:space-y-0.5">
                     {exp.achievements.map((item, idx) => (
                       <li key={idx} className="pl-1">
                         {item}
@@ -118,15 +132,15 @@ export const CVLayout: React.FC<CVLayoutProps> = ({ data, locale }) => {
                 {projects.map((project) => (
                   <div
                     key={project.id}
-                    className="border border-slate-100 p-3 rounded-lg"
+                    className="border border-slate-100 p-3 print:p-2 rounded-lg"
                   >
-                    <h3 className="font-bold text-sm text-slate-800 flex justify-between">
+                    <h3 className="font-bold text-sm print:text-xs text-slate-800 flex justify-between">
                       {project.title}
-                      <span className="text-[10px] text-indigo-500">
+                      <span className="text-[10px] print:text-[9px] text-indigo-500">
                         {project.stack.join(" • ")}
                       </span>
                     </h3>
-                    <p className="text-xs text-gray-600 mt-1">
+                    <p className="text-xs print:text-[11px] text-gray-600 mt-1 print:mt-0.5">
                       {project.description}
                     </p>
                   </div>
@@ -136,10 +150,10 @@ export const CVLayout: React.FC<CVLayoutProps> = ({ data, locale }) => {
           </div>
 
           {/* COLUMNA DERECHA (Sidebar) */}
-          <div className="space-y-6 print:space-y-4">
+          <div className="space-y-6 print:space-y-3">
             <section>
               <SectionTitle>{labels.skills}</SectionTitle>
-              <div className="space-y-3">
+              <div className="space-y-3 print:space-y-2">
                 {[
                   { label: "Frontend", items: skills.frontend },
                   { label: "Backend", items: skills.backend },
@@ -147,7 +161,7 @@ export const CVLayout: React.FC<CVLayoutProps> = ({ data, locale }) => {
                   { label: "Tools", items: skills.tools },
                 ].map((group) => (
                   <div key={group.label}>
-                    <h4 className="text-[10px] font-bold text-slate-400 uppercase mb-1.5">
+                    <h4 className="text-[10px] print:text-[9px] font-bold text-slate-400 uppercase mb-1.5 print:mb-1">
                       {group.label}
                     </h4>
                     <div className="flex flex-wrap gap-1">
@@ -163,12 +177,12 @@ export const CVLayout: React.FC<CVLayoutProps> = ({ data, locale }) => {
             <section>
               <SectionTitle>{labels.education}</SectionTitle>
               {educationItems.map((edu) => (
-                <div key={edu.id} className="mb-2">
-                  <h3 className="font-bold text-gray-800 text-xs">
+                <div key={edu.id} className="mb-2 print:mb-1">
+                  <h3 className="font-bold text-gray-800 text-xs print:text-[11px]">
                     {edu.degree}
                   </h3>
-                  <p className="text-[11px] text-gray-600">{edu.institution}</p>
-                  <p className="text-[10px] text-gray-400">{edu.period}</p>
+                  <p className="text-[11px] print:text-[10px] text-gray-600">{edu.institution}</p>
+                  <p className="text-[10px] print:text-[9px] text-gray-400">{edu.period}</p>
                 </div>
               ))}
             </section>
