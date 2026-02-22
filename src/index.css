@@ -3,22 +3,33 @@
 @media print {
   @page {
     margin: 0;
-    size: auto;
+    size: A4;
   }
 
   body {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
+    background-color: white !important;
+    margin: 0;
+    padding: 0;
   }
 
-  /* Ocultar encabezados y pies de página automáticos del navegador */
-  header,
-  footer,
-  aside,
-  nav,
-  form,
-  iframe,
-  .no-print {
+  /* Evita que las secciones se partan a la mitad */
+  section,
+  .mb-3,
+  .mb-6,
+  header {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .no-print,
+  .print\:hidden {
     display: none !important;
+  }
+
+  .shadow-xl,
+  .shadow-md {
+    box-shadow: none !important;
   }
 }

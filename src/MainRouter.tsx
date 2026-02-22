@@ -7,13 +7,16 @@ const MainRouter = () => {
     <Router>
       <Routes>
         {/* Ruta raíz: Carga datos en Español */}
-        <Route path="/" element={<CVLayout data={cvDataEs} />} />
+        <Route path="/" element={<CVLayout data={cvDataEs} locale="es" />} />
 
         {/* Ruta inglés: Carga datos en Inglés */}
-        <Route path="/en" element={<CVLayout data={cvDataEn} />} />
+        <Route
+          path="/en"
+          element={<CVLayout data={cvDataEn} locale="en" />}
+        />
 
         {/* Redirección por defecto */}
-        <Route path="*" element={<CVLayout data={cvDataEs} />} />
+        <Route path="*" element={<CVLayout data={cvDataEs} locale="es" />} />
       </Routes>
     </Router>
   );
